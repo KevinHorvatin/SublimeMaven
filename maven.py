@@ -86,6 +86,8 @@ class AsyncMavenProcess(object):
         # add /usr/local/bin to the path (for some reason not present through sublime)
         if os.name == 'posix':
             env['PATH'] = os.environ['PATH'] + os.pathsep + '/usr/local/bin'
+        else:
+            env['PATH'] = os.getenv('PATH')
 
         m2_home = None
         if 'M2_HOME' in env:
